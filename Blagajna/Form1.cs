@@ -13,17 +13,25 @@ namespace Blagajna
     public partial class Form1 : Form
     {
         private Point startPoint = new Point();
+        private int x;
+        private int y;
 
         public Form1()
         {
             InitializeComponent();
+
+            x = button4.Location.X;
+            y = button4.Location.Y;
         }
 
         public System.Windows.Forms.Button AddNewButton()
         {
             System.Windows.Forms.Button btn = new System.Windows.Forms.Button();
-            int x1 = button4.Location.X;
-            int y1 = button4.Location.Y;
+
+            int x1 = x;
+            int y1 = y;
+            //y += 40;
+
 
             this.Controls.Add(btn);
             btn.Left = x1;
@@ -33,7 +41,7 @@ namespace Blagajna
 
             btn.Text = "Maked";
 
-            btn.Click += new System.EventHandler(this.newButtonHandler);
+            btn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.newButtonHandler);
 
             return btn;
         }
@@ -41,7 +49,7 @@ namespace Blagajna
         void newButtonHandler(object sender, EventArgs e)
         {
             Button currBtn = (Button)sender;
-            MessageBox.Show("Clicked");
+            MoveBtn(currBtn);
         }
 
         public void MoveBtn(Button btnMove)

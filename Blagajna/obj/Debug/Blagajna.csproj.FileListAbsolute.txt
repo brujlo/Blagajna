@@ -8,3 +8,13 @@ F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csproj.GenerateReso
 F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csproj.CoreCompileInputs.cache
 F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.exe
 F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.pdb
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\bin\Debug\Blagajna.exe.config
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\bin\Debug\Blagajna.exe
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\bin\Debug\Blagajna.pdb
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csprojAssemblyReference.cache
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.Form1.resources
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.Properties.Resources.resources
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csproj.GenerateResource.cache
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csproj.CoreCompileInputs.cache
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.exe
+E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.pdb

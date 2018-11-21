@@ -17,26 +17,31 @@ namespace Blagajna
         public Form1()
         {
             InitializeComponent();
-            AddNewButton();
         }
 
         public System.Windows.Forms.Button AddNewButton()
         {
             System.Windows.Forms.Button btn = new System.Windows.Forms.Button();
-            int x1 = button1.Location.X;
-            int y1 = button1.Location.Y;
-            int x2 = button2.Location.X;
-            int y2 = button2.Location.Y;
+            int x1 = button4.Location.X;
+            int y1 = button4.Location.Y;
 
             this.Controls.Add(btn);
             btn.Left = x1;
-            btn.Top = ((y2 - y1) / 2) + y1;
+            btn.Top = y1 + 40;
 
             //flowLayoutPanel1.Controls.Add(btn);
 
             btn.Text = "Maked";
 
+            btn.Click += new System.EventHandler(this.newButtonHandler);
+
             return btn;
+        }
+
+        void newButtonHandler(object sender, EventArgs e)
+        {
+            Button currBtn = (Button)sender;
+            MessageBox.Show("Clicked");
         }
 
         public void MoveBtn(Button btnMove)
@@ -70,6 +75,11 @@ namespace Blagajna
         private void button3_MouseDown(object sender, MouseEventArgs e)
         {
             MoveBtn(button3);
+        }
+
+        private void button4_MouseClick(object sender, MouseEventArgs e)
+        {
+            AddNewButton();
         }
     }
 }

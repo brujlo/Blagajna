@@ -15,6 +15,7 @@ namespace Blagajna
         private Point startPoint = new Point();
         private int x;
         private int y;
+        private int btnCnt;
 
         public Form1()
         {
@@ -30,6 +31,7 @@ namespace Blagajna
 
             int x1 = x;
             int y1 = y;
+            btnCnt++;
             //y += 40;
 
 
@@ -39,7 +41,7 @@ namespace Blagajna
 
             //flowLayoutPanel1.Controls.Add(btn);
 
-            btn.Text = "Maked";
+            btn.Text = "Maked - " + btnCnt;
 
             btn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.newButtonHandler);
 

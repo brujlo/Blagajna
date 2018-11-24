@@ -16,6 +16,7 @@ namespace Blagajna
         private int x;
         private int y;
         private int btnCnt;
+        //samo comment
 
         public Form1()
         {

@@ -13,36 +13,32 @@ namespace Blagajna
     public partial class Form1 : Form
     {
         private Point startPoint = new Point();
-        private int x;
-        private int y;
         private int btnWith;
         private int btnHeight;
         private int btnCnt;
+        private int spaceBtwBtn;
 
         public Form1()
         {
             InitializeComponent();
 
-            x = button3.Location.X;
-            y = button3.Location.Y;
-
-            btnHeight = button4.Height;
             btnWith = button4.Width;
+            btnHeight = button4.Height;
         }
 
         public System.Windows.Forms.Button AddNewButton()
         {
             System.Windows.Forms.Button btn = new System.Windows.Forms.Button();
 
-            int x1 = x;
-            int y1 = y;
             btnCnt++;
-            //y += 40;
+            spaceBtwBtn = button3.Location.Y - button2.Location.Y - 40;
 
+            int xx1 = button3.Location.X;
+            int yy1 = button3.Location.Y + (spaceBtwBtn * btnCnt) + ((btnCnt - 1) * 40);
 
             this.Controls.Add(btn);
-            btn.Left = x1;
-            btn.Top = y1 + 40;
+            btn.Left = xx1;
+            btn.Top = yy1 + 40;
 
             btn.Width = btnWith;
             btn.Height = btnHeight;
@@ -73,9 +69,44 @@ namespace Blagajna
                     Point temp = Control.MousePosition;
                     Point res = new Point(startPoint.X - temp.X, startPoint.Y - temp.Y);
 
-                    btnMove.Location = new Point(btnMove.Location.X - res.X, btnMove.Location.Y - res.Y);
+                    if((startPoint.Y - res.Y >= startPoint.Y + 40 || startPoint.X - res.X > startPoint.X + 80) || (startPoint.Y - res.Y <= startPoint.Y - 40 || startPoint.X - res.X < startPoint.X - 80))
+                    {
+                        if (res.Y > 46)
+                        {
+                            btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y -46);
+                            startPoint = temp;
+                        }
 
-                    startPoint = temp;
+                        if (res.Y < -46)
+                        {
+                            btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y + 46);
+                            startPoint = temp;
+                        }
+
+                        if (res.X > 86)
+                        {
+                            btnMove.Location = new Point(btnMove.Location.X - 86, btnMove.Location.Y);
+                            startPoint = temp;
+                        }
+
+                        if (res.X < -86)
+                        {
+                            btnMove.Location = new Point(btnMove.Location.X + 86, btnMove.Location.Y);
+                            startPoint = temp;
+                        }
+                        //btnMove.Location = new Point(btnMove.Location.X - res.X, btnMove.Location.Y - res.Y);
+
+                        //startPoint = temp;
+                    }
+
+                    label2.Text = "X " + startPoint.X;
+                    label1.Text = "Y " + startPoint.Y;
+
+                    label5.Text = "X " + temp.X;
+                    label4.Text = "Y " + temp.Y;
+
+                    label8.Text = "X " + res.X;
+                    label7.Text = "Y " + res.Y;
                 }
             };
         }
@@ -98,6 +129,16 @@ namespace Blagajna
         private void button4_MouseClick(object sender, MouseEventArgs e)
         {
             AddNewButton();
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            groupBox1.Text = button1.Text;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

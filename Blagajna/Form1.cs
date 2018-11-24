@@ -15,15 +15,19 @@ namespace Blagajna
         private Point startPoint = new Point();
         private int x;
         private int y;
+        private int btnWith;
+        private int btnHeight;
         private int btnCnt;
-        //samo comment
 
         public Form1()
         {
             InitializeComponent();
 
-            x = button4.Location.X;
-            y = button4.Location.Y;
+            x = button3.Location.X;
+            y = button3.Location.Y;
+
+            btnHeight = button4.Height;
+            btnWith = button4.Width;
         }
 
         public System.Windows.Forms.Button AddNewButton()
@@ -39,6 +43,9 @@ namespace Blagajna
             this.Controls.Add(btn);
             btn.Left = x1;
             btn.Top = y1 + 40;
+
+            btn.Width = btnWith;
+            btn.Height = btnHeight;
 
             //flowLayoutPanel1.Controls.Add(btn);
 

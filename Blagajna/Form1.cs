@@ -13,42 +13,49 @@ namespace Blagajna
     public partial class Form1 : Form
     {
         private Point startPoint = new Point();
-        private int btnWith;
-        private int btnHeight;
+        private int btnWithMove;
+        private int btnHeightMove;
         private int btnCnt;
         private int spaceBtwBtn;
+        private List<Button> btnList = new List<Button>();
+        private int xx1;
+        private int yy1;
+        private Point temp;
+        private Point res;
 
         public Form1()
         {
             InitializeComponent();
 
-            btnWith = button4.Width;
-            btnHeight = button4.Height;
+            spaceBtwBtn = 6;
+            btnWithMove = button1.Width + spaceBtwBtn;
+            btnHeightMove = button1.Height + spaceBtwBtn;
+
+            xx1 = button1.Location.X;
+            yy1 = button1.Location.Y + spaceBtwBtn;
         }
 
-        public System.Windows.Forms.Button AddNewButton()
+        public Button AddNewButton()
         {
-            System.Windows.Forms.Button btn = new System.Windows.Forms.Button();
+            Button btn = new Button();
 
             btnCnt++;
-            spaceBtwBtn = button3.Location.Y - button2.Location.Y - 40;
 
-            int xx1 = button3.Location.X;
-            int yy1 = button3.Location.Y + (spaceBtwBtn * btnCnt) + ((btnCnt - 1) * 40);
+            //xx1 = button1.Location.X;
+            //yy1 = button1.Location.Y + (spaceBtwBtn * btnCnt) + ((btnCnt - 1) * 40);
 
             this.Controls.Add(btn);
+
+            btn.Width = button1.Width;
+            btn.Height = button1.Height;
             btn.Left = xx1;
-            btn.Top = yy1 + 40;
+            btn.Top = yy1 + btn.Height;
 
-            btn.Width = btnWith;
-            btn.Height = btnHeight;
-
-            //flowLayoutPanel1.Controls.Add(btn);
+            xx1 = btn.Location.X;
+            yy1 = btn.Location.Y + spaceBtwBtn;
 
             btn.Text = "Maked - " + btnCnt;
-
-            btn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.newButtonHandler);
-
+            btn.MouseDown += new MouseEventHandler(this.newButtonHandler);
             return btn;
         }
 
@@ -64,38 +71,38 @@ namespace Blagajna
 
             btnMove.MouseMove += (ss, ee) =>
             {
-                if (ee.Button == System.Windows.Forms.MouseButtons.Left)
+                if (ee.Button == MouseButtons.Left)
                 {
-                    Point temp = Control.MousePosition;
-                    Point res = new Point(startPoint.X - temp.X, startPoint.Y - temp.Y);
+                    temp = Control.MousePosition;
+                    res = new Point(startPoint.X - temp.X, startPoint.Y - temp.Y);
 
-                    if((startPoint.Y - res.Y >= startPoint.Y + 40 || startPoint.X - res.X > startPoint.X + 80) || (startPoint.Y - res.Y <= startPoint.Y - 40 || startPoint.X - res.X < startPoint.X - 80))
+                    if((startPoint.Y - res.Y >= startPoint.Y + (btnHeightMove - spaceBtwBtn) || startPoint.X - res.X > startPoint.X + (btnWithMove - spaceBtwBtn)) 
+                    || (startPoint.Y - res.Y <= startPoint.Y - (btnHeightMove - spaceBtwBtn) || startPoint.X - res.X < startPoint.X - (btnWithMove - spaceBtwBtn)))
                     {
-                        if (res.Y > 46)
+                        if (res.Y > btnHeightMove)
                         {
-                            btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y -46);
-                            startPoint = temp;
+                            btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y - btnHeightMove);
+                            resetCounters(btnMove);
                         }
 
-                        if (res.Y < -46)
+                        if (res.Y < -btnHeightMove)
                         {
-                            btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y + 46);
-                            startPoint = temp;
+                            btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y + btnHeightMove);
+                            resetCounters(btnMove);
                         }
 
-                        if (res.X > 86)
+                        if (res.X > btnWithMove)
                         {
-                            btnMove.Location = new Point(btnMove.Location.X - 86, btnMove.Location.Y);
-                            startPoint = temp;
+                            btnMove.Location = new Point(btnMove.Location.X - btnWithMove, btnMove.Location.Y);
+                            resetCounters(btnMove);
                         }
 
-                        if (res.X < -86)
+                        if (res.X < -btnWithMove)
                         {
-                            btnMove.Location = new Point(btnMove.Location.X + 86, btnMove.Location.Y);
-                            startPoint = temp;
+                            btnMove.Location = new Point(btnMove.Location.X + btnWithMove, btnMove.Location.Y);
+                            resetCounters(btnMove);
                         }
                         //btnMove.Location = new Point(btnMove.Location.X - res.X, btnMove.Location.Y - res.Y);
-
                         //startPoint = temp;
                     }
 
@@ -111,19 +118,17 @@ namespace Blagajna
             };
         }
 
+        private void resetCounters(Button btn)
+        {
+            startPoint = temp;
+            xx1 = btn.Location.X;
+            yy1 = btn.Location.Y + spaceBtwBtn;
+
+        }
+
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
             MoveBtn(button1);
-        }
-
-        private void button2_MouseDown(object sender, MouseEventArgs e)
-        {
-            MoveBtn(button2);
-        }
-
-        private void button3_MouseDown(object sender, MouseEventArgs e)
-        {
-            MoveBtn(button3);
         }
 
         private void button4_MouseClick(object sender, MouseEventArgs e)

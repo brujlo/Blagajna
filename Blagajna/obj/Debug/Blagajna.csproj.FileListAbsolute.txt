@@ -18,3 +18,17 @@ E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csproj.GenerateR
 E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csproj.CoreCompileInputs.cache
 E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.exe
 E:\VisualProjects\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.pdb
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Dapper.dll
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.MSXML.dll
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Dapper.xml
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.OLE.Interop.xml
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.Shell.Interop.xml
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.xml
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.xml
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.xml
+F:\PROJEKTI\VS\Blagajna\Blagajna\Blagajna\obj\Debug\Blagajna.csproj.CopyComplete

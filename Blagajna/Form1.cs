@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
 
 namespace Blagajna
 {
@@ -63,6 +64,15 @@ namespace Blagajna
         {
             Button currBtn = (Button)sender;
             MoveBtn(currBtn);
+            BtnClick(currBtn);
+        }
+
+        public void BtnClick(Button btnClick)
+        {
+            btnClick.Click += (s, e) =>
+            {
+                btnClick.Text = groupBox1.Text = ConnectionHelper.GetFirstValueAsString("select FullName from Sifrarnik where FullCode = 13002010");
+            };
         }
 
         public void MoveBtn(Button btnMove)
@@ -71,6 +81,10 @@ namespace Blagajna
 
             btnMove.MouseMove += (ss, ee) =>
             {
+
+                List<Control> c = getButtnos();
+                int moveByTwo = 1;
+
                 if (ee.Button == MouseButtons.Left)
                 {
                     temp = Control.MousePosition;
@@ -79,14 +93,40 @@ namespace Blagajna
                     if((startPoint.Y - res.Y >= startPoint.Y + (btnHeightMove - spaceBtwBtn) || startPoint.X - res.X > startPoint.X + (btnWithMove - spaceBtwBtn)) 
                     || (startPoint.Y - res.Y <= startPoint.Y - (btnHeightMove - spaceBtwBtn) || startPoint.X - res.X < startPoint.X - (btnWithMove - spaceBtwBtn)))
                     {
+                        foreach (Control k in c)
+                        {
+                            if(k.Text != btnMove.Text)
+                            {
+                                if (k.Location.Y == btnMove.Location.Y + btnHeightMove && res.Y < 0)
+                                {
+                                    if (k.Location.X == btnMove.Location.X)
+                                    {
+                                        btnHeightMove = k.Location.Y + (btnHeightMove - 6);
+                                        //moveByTwo++;
+                                        //moveByTwo = 2;
+                                    }
+                                }else if(k.Location.Y + btnHeightMove == btnMove.Location.Y && res.Y > 0)
+                                {
+                                    if (k.Location.X == btnMove.Location.X)
+                                    {
+                                        btnHeightMove = k.Location.Y + (btnHeightMove-6);
+                                        //moveByTwo++;
+                                        //moveByTwo = 2;
+                                    }
+                                }
+                            }
+                        }
+
                         if (res.Y > btnHeightMove)
                         {
+                            //btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y - (btnHeightMove * moveByTwo));
                             btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y - btnHeightMove);
                             resetCounters(btnMove);
                         }
 
                         if (res.Y < -btnHeightMove)
                         {
+                            //btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y + (btnHeightMove * moveByTwo));
                             btnMove.Location = new Point(btnMove.Location.X, btnMove.Location.Y + btnHeightMove);
                             resetCounters(btnMove);
                         }
@@ -104,6 +144,7 @@ namespace Blagajna
                         }
                         //btnMove.Location = new Point(btnMove.Location.X - res.X, btnMove.Location.Y - res.Y);
                         //startPoint = temp;
+                        moveByTwo = 1;
                     }
 
                     label2.Text = "X " + startPoint.X;
@@ -126,6 +167,12 @@ namespace Blagajna
 
         }
 
+        private List<Control> getButtnos()
+        {
+            List<Control> c = Controls.OfType<Button>().Cast<Control>().ToList();
+            return c;
+        }
+
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
             MoveBtn(button1);
@@ -138,7 +185,8 @@ namespace Blagajna
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            groupBox1.Text = button1.Text;
+            button1.Text = groupBox1.Text = ConnectionHelper.GetFirstValueAsString("select FullName from Sifrarnik where FullCode = 13002010");
+            
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

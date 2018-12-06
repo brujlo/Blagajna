@@ -23,6 +23,8 @@ namespace Blagajna
         private int yy1;
         private Point temp;
         private Point res;
+        private int startPointX;
+        private int startPointY;
 
         public Form1()
         {
@@ -75,6 +77,8 @@ namespace Blagajna
         public void MoveBtn(Button btnMove)
         {
             startPoint = Control.MousePosition;
+            startPointX = btnMove.Location.X;
+            startPointY = btnMove.Location.Y;
 
             btnMove.MouseMove += (ss, ee) =>
             {
@@ -86,23 +90,38 @@ namespace Blagajna
                     if ((startPoint.Y - res.Y >= startPoint.Y + (btnHeightMove - spaceBtwBtn) || startPoint.X - res.X > startPoint.X + (btnWithMove - spaceBtwBtn))
                     || (startPoint.Y - res.Y <= startPoint.Y - (btnHeightMove - spaceBtwBtn) || startPoint.X - res.X < startPoint.X - (btnWithMove - spaceBtwBtn)))
                     {
+                        if(startPoint.Y - res.Y >= startPoint.Y + (btnHeightMove - spaceBtwBtn) || startPoint.Y - res.Y <= startPoint.Y - (btnHeightMove - spaceBtwBtn))
                             checkForControlPositionY(btnMove);
+                        if (startPoint.X - res.X > startPoint.X + (btnWithMove - spaceBtwBtn) || startPoint.X - res.X < startPoint.X - (btnWithMove - spaceBtwBtn))
                             checkForControlPositionX(btnMove);
-                            resetCounters(btnMove);
 
-                        label2.Text = "X " + startPoint.X;
-                        label1.Text = "Y " + startPoint.Y;
+                        resetCounters(btnMove);
 
-                        label5.Text = "X " + temp.X;
-                        label4.Text = "Y " + temp.Y;
+                        //label2.Text = "X " + startPoint.X;
+                        //label1.Text = "Y " + startPoint.Y;
 
-                        label8.Text = "X " + res.X;
-                        label7.Text = "Y " + res.Y;
+                        //label5.Text = "X " + temp.X;
+                        //label4.Text = "Y " + temp.Y;
 
-                        label11.Text = "H " + btnHeightMove;
-                        label10.Text = "X " + btnMove.Location.X;
-                        label13.Text = "Y " + btnMove.Location.Y;
+                        //label8.Text = "X " + res.X;
+                        //label7.Text = "Y " + res.Y;
+
+                        //label11.Text = "H " + btnHeightMove;
+                        //label10.Text = "X " + btnMove.Location.X;
+                        //label13.Text = "Y " + btnMove.Location.Y;
                     }
+                    label2.Text = "X " + startPoint.X;
+                    label1.Text = "Y " + startPoint.Y;
+
+                    label5.Text = "X " + temp.X;
+                    label4.Text = "Y " + temp.Y;
+
+                    label8.Text = "X " + res.X;
+                    label7.Text = "Y " + res.Y;
+
+                    label11.Text = "H " + btnHeightMove;
+                    label10.Text = "X " + btnMove.Location.X;
+                    label13.Text = "Y " + btnMove.Location.Y;
                 }
             };
         }
